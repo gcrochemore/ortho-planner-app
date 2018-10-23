@@ -12,7 +12,7 @@ import {HttpClient} from "@angular/common/http";
 export class AppComponent {
     title = 'app';
 
-    constructor(private globals: Globals,
+    constructor(public globals: Globals,
                 private onlineStatusService: OnlineStatusService,
                 private router: Router,
                 public http: HttpClient) {

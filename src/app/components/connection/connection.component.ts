@@ -13,6 +13,7 @@ import {Globals} from "../../globals";
 
 export class ConnectionComponent {
     errorAuthenticate: boolean = false;
+    hide: boolean = true;
 
     loginFormControl = new FormControl('', [
         Validators.required

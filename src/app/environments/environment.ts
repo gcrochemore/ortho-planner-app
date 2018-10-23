@@ -1,9 +1,15 @@
-import * as _ from 'lodash';
-import {config} from './config';
 
-export const environment = _.merge(config,  {
+export const environment = {
     production: false,
     api: {
-        url: 'http://localhost:3000'
-    }
-});
+        url: 'www.monserveur-prod.com',
+        entities: {
+            user: {
+                authenticate: '/users/authenticate',
+                register: '/users/register'
+            },
+            note: '/notes',
+        }
+    },
+    offLineDatabaseName: 'todo'
+};
