@@ -1,0 +1,15 @@
+.notes{
+    position:relative;
+}
+
+/*.note mat-icon{
+    position: absolute;
+    right:10px;
+    display: none;
+    color:#f44336;
+    cursor: pointer;
+}
+
+.note:hover mat-icon{
+    display: block;
+}*/

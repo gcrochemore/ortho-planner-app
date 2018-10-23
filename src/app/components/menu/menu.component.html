@@ -1,0 +1,7 @@
+<div style="float:right;margin-right:50px;">
+  <button mat-flat-button [matMenuTriggerFor]="menu">Menu</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="addNote()">Ajouter une note</button>
+    <button mat-menu-item>Voir mon profil</button>
+  </mat-menu>
+</div>

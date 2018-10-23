@@ -1,0 +1,27 @@
+<h1 class="align-center">{{title}}</h1>
+<div class="align-center padding-10">
+<mat-card>
+    <form [formGroup]="form" (keyup.enter)="saveNote($event)">
+        <mat-form-field class="full-width">
+            <input matInput
+                   placeholder="Écrivez une note et validez avec entrée"
+                   formControlName="content"
+                   [formGroup]="form"
+                   autocomplete="">
+            <mat-error *ngIf="form.controls.note?.hasError('required')">
+                La note ne doit pas être vide
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="hidden">
+            <input matInput
+                   placeholder=""
+                   formControlName="id"
+                   [formGroup]="form"
+                   autocomplete="">
+        </mat-form-field>
+    </form>
+</mat-card>
+    <div class="padding-10">
+        <button mat-flat-button class="color-white" (click)="cancel()">Annuler</button>
+    </div>
+</div>

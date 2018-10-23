@@ -1,0 +1,92 @@
+<h1>Création d'un compte utilisateur</h1>
+<ng-container *ngIf="!userIsRegistered">
+    <form id="createAccountForm" [formGroup]="form" (submit)="createAccount($event)">
+        <div class="create-account-container">
+
+            <mat-form-field>
+                <input matInput
+                       placeholder="email"
+                       formControlName="email"
+                       [formGroup]="form"
+                       autocomplete="email">
+                <mat-error *ngIf="form.controls.email?.hasError('email') && !form.controls.email?.hasError('required')">
+                    Veuillez indiquer une adresse e-mail valide
+                </mat-error>
+                <mat-error *ngIf="form.controls.email?.hasError('required')">
+                    L'e-mail est obligatoire
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="login"
+                       formControlName="login"
+                       [formGroup]="form"
+                       autocomplete="login">
+                <mat-error *ngIf="form.controls.login?.hasError('required')">
+                    Votre login est obligatoire
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput
+                       placeholder="Prénom"
+                       formControlName="firstName"
+                       [formGroup]="form"
+                       autocomplete="firstName">
+                <mat-error *ngIf="form.controls.firstName.hasError('required')">
+                    Votre prénom est obligatoire
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput
+                       placeholder="Nom"
+                       formControlName="lastName"
+                       [formGroup]="form"
+                       autocomplete="lastName">
+                <mat-error *ngIf="form.controls.lastName.hasError('required')">
+                    Votre nom est obligatoire
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input
+                        matInput
+                        placeholder="Mot de passe"
+                        type="password"
+                        id="password"
+                        formControlName="password"
+                        [formGroup]="form"
+                        autocomplete="password">
+
+            </mat-form-field>
+            <mat-form-field>
+                <input
+                        matInput
+                        placeholder="Confirmation du mot de passe"
+                        type="password"
+                        id="confirmPassword"
+                        formControlName="confirmPassword"
+                        [formGroup]="form"
+                        autocomplete="confirmPassword">
+
+            </mat-form-field>
+
+            <div *ngIf="form.controls.confirmPassword.errors?.MatchPassword">Les mots de passe doivent identiques</div>
+
+            <button mat-flat-button [disabled]="!form.valid">S'enregistrer</button>
+        </div>
+    </form>
+
+    <div class="padding-10">
+        <a [routerLink]="['/login']" queryParamsHandling preserveFragment>
+            Annuler
+        </a>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="userIsRegistered">
+    <a [routerLink]="['/login']" queryParamsHandling preserveFragment>
+        Vous êtes bien enregistré, vous pouvez désormais vous authentifier
+    </a>
+</ng-container>

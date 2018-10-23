@@ -1,0 +1,9 @@
+.create-account-container {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.create-account-container > * {
+    width: 100%;
+}

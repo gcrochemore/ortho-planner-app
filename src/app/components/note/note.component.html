@@ -1,0 +1,37 @@
+<h1 class="align-center">Notes</h1>
+
+<div class="padding-10">
+
+    <ng-container *ngIf="notes.length > 0">
+        <mat-menu #appMenu="matMenu">
+            <ng-template matMenuContent let-note="note">
+                <button mat-menu-item (click)="editNote(note)">
+                    <mat-icon matListIcon>edit</mat-icon>
+                    Editer
+                </button>
+                <button mat-menu-item (click)="deleteNote(note.id)">
+                    <mat-icon matListIcon>delete</mat-icon>
+                    Supprimer
+                </button>
+            </ng-template>
+        </mat-menu>
+
+        <div>
+            <mat-card>
+                <mat-list class="notes">
+                    <mat-list-item *ngFor="let note of notes; let i = index" class="note"
+                                   [dragarr]="['notes',i, notes]"
+                                   (dropped)="onDrop($event)">
+                        <div matLine
+                                  [matMenuTriggerFor]="appMenu"
+                                  [matMenuTriggerData]="{note : note}"> {{note.content}}
+                        </div>
+                    </mat-list-item>
+                </mat-list>
+            </mat-card>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="notes.length == 0">
+        <p>Vous n'avez pas de note</p>
+    </ng-container>
+</div>

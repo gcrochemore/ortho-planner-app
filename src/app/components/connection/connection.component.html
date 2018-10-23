@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row align-center">
+        <div class="col-12 app-title">OrthoPlanner</div>
+    </div>
+    <form id="connectionForm" (submit)="authenticateUser($event)">
+        <div class="basic-container">
+            <mat-form-field>
+                <input matInput placeholder="Votre nom d'utilisateur" [formControl]="loginFormControl">
+                <mat-error *ngIf="loginFormControl.hasError('required')">
+                    Le nom d'utilisateur est obligatoire
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Votre mot de passe"
+                       [type]="hide ? 'password' : 'text'"
+                       [formControl]="passwordFormControl">
+                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                <mat-error *ngIf="passwordFormControl.hasError('required')">
+                    Veuillez indiquer un mot de passe
+                </mat-error>
+            </mat-form-field>
+
+            <p class="error-message" *ngIf="errorAuthenticate">Identifiant ou mot de passe incorrect</p>
+            <br>
+            <button mat-flat-button>Se connecter</button>
+        </div>
+    </form>
+
+    <div class="padding-10 hidden">
+        <a [routerLink]="['/create-account']" queryParamsHandling preserveFragment>
+            Créer un compte
+        </a>
+    </div>
+</div>
